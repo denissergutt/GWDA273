@@ -1,0 +1,13 @@
+
+	body {
+
+		background-image: url(https://static.pexels.com/photos/10651/photo-1432821596592-e2c18b78144f.jpeg);
+		background-size: cover;
+	}
+	h1 {
+		color: #FFFFFF;
+		font-size: 60px;
+		font-family: 'Montserrat', sans-serif;
+		padding: 200px;
+		text-align: center;
+	}
