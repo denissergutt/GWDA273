@@ -1,0 +1,53 @@
+article(itemscope, itemtype="http://schema.org/Person", ng-app="resume")
+  header.header(role="banner")
+    hgroup
+      img.headshot(itemprop="image", src="http://i.imgur.com/HukgQul.png?1", alt="Denisse Romano")  
+      h1(itemprop="name") Denisse Romano
+      h2.user-description(itemprop="description") Creative Graphic Designer
+    address.contact-details    
+      a.telephone(href="tel:+1-786-219-6621", itemprop="telephone")
+        span.content 786-219-6621
+      div.org(itemscope, itemtype="http://schema.org/Organization")
+        a.website(href="http://www.64interactive.com", itemprop="url")
+          span(itemprop="name") Aventura Miami, FL
+        div.address(itemscope, itemprop="address")
+       
+          span(itemprop="postalCode") 
+      a.email(href="mailto:denisseromano@gmail.com", itemprop="email")
+        span.content denisseromano@gmail.com
+  div.content
+    section.languages(ng-controller="LanguagesCtrl")
+      header
+        h1.languages-heading Languages
+      ul.languages-list
+        li(ng-repeat="language in languages", ng-bind="language")
+        
+
+    section.tools(ng-controller="ToolsCtrl")
+      header
+        h1.tools-heading Tools
+      ul.tool-types-list
+        li(ng-repeat="type in toolTypes")
+          h2.tool-type-heading(ng-bind="type.name")
+          ul.tools-list
+           li(ng-repeat="tool in type.tools", ng-bind="tool")
+           
+    section.clients(ng-controller="ClientsCtrl")
+      header
+        h1.clients-heading Clients
+      ol.clients-list
+        li.client(itemscope, ng-repeat="client in clients", itemtype="http://schema.org/Organization")
+          h2.client-name
+            span(itemprop="name", ng-bind="client.name")
+            a.client-link(itemprop="url", ng-href="{{ client.url }}", title="{{ client.name }}'s website", ng-bind="client.url")
+              span.text
+          div.client-time-worked-at
+            time(ng-bind="client.startDate")
+            |  - 
+            time(ng-bind="client.endDate")
+          p(ng-bind="client.service")
+          ul
+            li(ng-repeat="highlight in client.highlights", ng-bind="highlight")
+          blockquote.client-testimonial(ng-if="client.testimonial")
+            p(ng-bind="client.testimonial.content")
+            footer(ng-bind="client.testimonial.author.name + ', ' + client.testimonial.author.jobTitle")
